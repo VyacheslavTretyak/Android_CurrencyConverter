@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         adapter = new CurrencyAdapter(this, R.layout.currency_item, data.GetCurrenciesData());
-        adapter.setDropDownViewResource(R.layout.currency_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
