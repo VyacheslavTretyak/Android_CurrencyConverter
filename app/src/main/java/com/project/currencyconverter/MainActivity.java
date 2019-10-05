@@ -20,6 +20,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvResult;
+    private TextView tvResultFrom;
     private Spinner fromSpinner;
     private Spinner toSpinner;
     private EditText editValue;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         data = new CurrencyData(this);
 
         tvResult = findViewById(R.id.tvResult);
+        tvResultFrom = findViewById(R.id.tvResultFrom);
         fromSpinner = findViewById(R.id.fromSpinner);
         toSpinner = findViewById(R.id.toSpinner);
         editValue = findViewById(R.id.editValue);
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Currency item = (Currency) adapterView.getAdapter().getItem(i);
                 Toast.makeText(MainActivity.this, item.name, Toast.LENGTH_SHORT).show();
+                CountCurrency(editValue.getText().toString());
             }
 
             @Override
@@ -95,8 +98,11 @@ public class MainActivity extends AppCompatActivity {
             float c2 = toCurrency.value / toCurrency.nominal;
             float res = c1 / c2;
 
-            tvResult.setText(String.valueOf(res));
+
+            tvResultFrom.setText(value+" "+fromCurrency.charCode+" = ");
+            tvResult.setText(String.valueOf(res)+" "+toCurrency.charCode);
         }catch (Exception ex){
+            tvResultFrom.setText("");
             tvResult.setText("Input value");
         }
 
